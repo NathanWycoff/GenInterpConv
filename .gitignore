@@ -1,3 +1,9 @@
+# Vim files
+#
+*.swp
+*.swo
+
+
 # History files
 .Rhistory
 .Rapp.history

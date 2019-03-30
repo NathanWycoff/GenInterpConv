@@ -6,9 +6,9 @@ source('R/legendre.R')
 source('R/mindiff.R')
 
 set.seed(123)
-N <- 100
-P <- 110
-sigma <- 0.0
+N <- 20
+P <- 40
+sigma <- 1
 
 # Generate params
 beta <- rnorm(P+1)
@@ -45,3 +45,7 @@ points(xx, pred_naive, type = 'l', col = 'red')
 points(xx, pred_legendre, type = 'l', col = 'blue')
 points(xx, pred_mind, type = 'l', col = 'green')
 points(xx, pred_mind2, type = 'l', col = 'orange')
+
+plot(x, y, ylim = 1.1*range(pred_mind2))
+points(xx, pred_mind2, type = 'l', col = 'orange')
+points(xx, sapply(xx, sin), type = 'l', col = 'red')

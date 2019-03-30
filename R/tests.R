@@ -3,6 +3,7 @@
 
 source('R/L2_norm.R')
 source('R/diff.R')
+source('R/legendre.R')
 
 ## Test L2 norm
 f1 <- function(x) {
@@ -36,3 +37,8 @@ h <- 1e-6
 x <- 0.8
 (f(x + h) - f(x)) / h
 fp(x)
+
+## Polynomial representation
+#TODO: Write a function going to other way for a better test.
+print(leg_to_mon(c(5,-4,-2,3,1)))
+c(51/8, -17/2, -27/4, 15/2, 35/8)
