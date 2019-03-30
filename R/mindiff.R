@@ -41,3 +41,8 @@ mindiff_interp2 <- function(A, y) {
     M <- DtDgi %*% t(A)
     return(M %*% (ginv(A %*% M) %*% y))
 }
+
+# A norm which "frontloads" the weight for a finite sequence.
+fl_norm <- function(a) {
+    return(sum(abs(a) / (1:length(a))^2))
+}

@@ -52,3 +52,35 @@ leg_to_mon <- function(lc) {
 
     return(pc)
 }
+
+#' Polynomial Basis Conversion
+#'
+#' Convert from a polynomial in monomial / canonical form to one in Legendre form.
+#' 
+#' Translation of Mathematica code form J.M here: https://math.stackexchange.com/questions/86298/the-relationship-between-legendre-polynomials-and-monomial-basis-polynomials
+#' Implements Clenshaw's algorithm.
+#'
+#' @param pc The monomial coefficients.
+#' @return A vector of length length(lc) giving the Legendre basis of the input polynomial.
+mon_to_leg <- function(pc) {
+    n <- length(pc) - 1
+    q <- lc <- rep(0, n+1)
+
+    lc[1] <- pc[n]
+    lc[2] <- pc[length(pc)]
+    for (k in 2:n) {
+        q[1] <- lc[1]
+        lc[1] <- pc[n-k+1] + lc[2] / 3
+        if (k-1 >= 2) {
+            for (j in 2:(k-1)) {
+                q[j] <- lc[j]
+                lc[j] <- j * lc[j+1] / (2*j+1) + (j-1) * q[j-1]/(2*j-3)
+            }
+        }
+        q[k] <- lc[k]
+        lc[k] <- (k-1) * q[k-1] / (2*k-3)
+        lc[k+1] <- k * q[k] / (2*k-1)
+    }
+
+    return(lc)
+}

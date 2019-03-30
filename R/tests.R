@@ -38,7 +38,15 @@ x <- 0.8
 (f(x + h) - f(x)) / h
 fp(x)
 
-## Polynomial representation
-#TODO: Write a function going to other way for a better test.
-print(leg_to_mon(c(5,-4,-2,3,1)))
-c(51/8, -17/2, -27/4, 15/2, 35/8)
+## Going between Polynomial representations
+pc <- c(5,-4,-2,3,1)
+print(leg_to_mon(mon_to_leg(pc)))
+print(pc)
+
+pc <- rnorm(10)
+print(leg_to_mon(mon_to_leg(pc)))
+print(pc)
+
+pc <- rnorm(100)
+print(leg_to_mon(mon_to_leg(pc)))
+print(pc)
