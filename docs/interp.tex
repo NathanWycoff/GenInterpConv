@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+
+\title{Asymptotics of Over-Parameterized Polynomial Models}
+\author{Nathan Wycoff}
+
+\begin{document}
+	\maketitle
+	
+	\section{Notation}
+	
+	\begin{table}[h]
+		\begin{tabular}{ll}
+			$N$ &Number of obs\\
+			$d$ & Degree of polynomial\\
+			$\mathbf{x}$ & Locations of observations (1D problem). \\
+			$\mathbf{A}(\mathbf{x})$ & polynomial terms evaluated at each $\mathbf{X}$ matrix, an $N\times D$ matrix. \\
+			$\mathbf{y}$ & Observations
+		\end{tabular}
+	\end{table}
+	
+	\section{Interpolation with Minimal Derivative Norm}
+	
+	Norm minimization with respect to the coordinates, which is often the way things are done in machine learning, is somewhat arbitrary for our case as they depend on the basis chosen. It happens to be that the norm of the Legendre basis coordinates of a polynomial also gives something like the $\ell_2$ norm of that polynomial (ask anthony).
+	
+	So we are confronted with the following optimization problem:
+	
+	\begin{align*}
+		& \min_{\mathbf{c}} ||\mathbf{c}||_2 \\
+		& S.T. \\
+		& \mathbf{A}(\mathbf{x}) \mathbf{c} = \mathbf{y}
+	\end{align*}
+	
+\end{document}
